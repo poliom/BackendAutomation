@@ -89,5 +89,19 @@ namespace BackEndAutomation.Rest.Calls
             RestResponse response = client.Execute(request);
             Console.WriteLine(response.Content);
         }
+
+        public RestResponse generalRestCall(string baseUrl, string endpoint, Method method)
+        {
+
+            RestClientOptions options = new RestClientOptions(baseUrl)
+            {
+                Timeout = TimeSpan.FromSeconds(120),
+            };
+            RestClient client = new RestClient(options);
+            RestRequest request = new RestRequest(endpoint, method);
+            RestResponse response = client.Execute(request);
+
+            return response;
+        }
     }
 }

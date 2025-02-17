@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 
 namespace BackEndAutomation.Rest.DataManagement
@@ -12,7 +13,7 @@ namespace BackEndAutomation.Rest.DataManagement
 
         public string ExtractLoggedInUserToken(string jsonResponse)
         {
-            var jsonObject = JObject.Parse(jsonResponse);
+            JObject jsonObject = JObject.Parse(jsonResponse);
             return jsonObject["token"]?.ToString();
         }
 
