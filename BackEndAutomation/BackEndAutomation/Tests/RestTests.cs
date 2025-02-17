@@ -2,6 +2,7 @@
 using BackEndAutomation.Rest.DataManagement;
 using NUnit.Framework;
 using RestSharp;
+using System;
 
 namespace BackEndAutomation.Tests
 {
@@ -22,8 +23,8 @@ namespace BackEndAutomation.Tests
         {
             RestCalls restCalls = new RestCalls();
 
-            RestResponse userDetailsResponse = restCalls.LoginCall("http://161.35.202.130:3000", "dbsdhsh", "sdhasdshs");
-            Assert.That(userDetailsResponse.StatusCode, Is.EqualTo(System.Net.HttpStatusCode.Created));
+            RestResponse userDetailsResponse = restCalls.LoginCall("http://161.35.202.130:3000", "dbsdhsh", "sdhshs");
+            Assert.That(userDetailsResponse.StatusCode, Is.EqualTo(System.Net.HttpStatusCode.BadRequest));
         }
 
         [Test]
@@ -81,6 +82,15 @@ namespace BackEndAutomation.Tests
 
             RestResponse userFollowResponse = restCalls.ToFollowUser("http://161.35.202.130:3000", "8335", token, false);
             Assert.That(userFollowResponse.StatusCode, Is.EqualTo(System.Net.HttpStatusCode.OK));
+        }
+
+        [Test]
+        public void randomAPItest()
+        {
+            RestCalls restCalls = new RestCalls();
+            RestResponse response = restCalls.generalRestCall("https://restcountries.com/v3.1", "/all?fields=name", Method.Get);
+
+            Assert.That(response.StatusCode, Is.EqualTo(System.Net.HttpStatusCode.OK));
         }
     }
 }
