@@ -1,4 +1,4 @@
-﻿namespace BackEndAutomation.DataProcessorCodes
+﻿namespace BackEndAutomation.MethodsAndData
 {
     public interface IExternalService
     {

@@ -2,7 +2,6 @@
 using BackEndAutomation.Rest.DataManagement;
 using NUnit.Framework;
 using RestSharp;
-using System;
 
 namespace BackEndAutomation.Tests
 {
