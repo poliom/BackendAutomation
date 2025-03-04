@@ -8,7 +8,7 @@
         {
             Parallel.For(0, 1000, _ =>
             {
-                sharedCounter++;
+                sharedCounter = sharedCounter + 1;
             });
 
             Console.WriteLine($"Final value of shared counter: {sharedCounter}");

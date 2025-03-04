@@ -9,11 +9,11 @@ RestTestCalls.RestProfileDetailsTestsCalls();
 RestTestCalls.RestFollowUnfollowProfileTestCalls();
 */
 
-// Threads methods
-Threads.ThreadsMethod();
-ThreadTasks.ThreadTasksMethod();
+//Threads methods
+//Threads.ThreadsMethod();
+//ThreadTasks.ThreadTasksMethod();
 
 // Parallel methods
-ParallelTesting.ParallelTestingMethod();
-RaceCondition.RaceConditionMethod();
+//ParallelTesting.ParallelTestingMethod();
+//RaceCondition.RaceConditionMethod();
 RaceConditionFix.RaceConditionFixMethod();

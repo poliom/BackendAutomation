@@ -11,7 +11,7 @@
             thread2.Start();
 
             thread1.Join();
-            thread2.Join();
+            //thread2.Join();
 
             Console.WriteLine("All tasks completed.");
         }
@@ -20,6 +20,11 @@
         {
             for (int i = 1; i <= 3; i++)
             {
+                if (i == 2 && taskName == "Task 1")
+                {
+                    Thread.Sleep(10000);
+                    Console.WriteLine("Too much work");
+                }
                 Console.WriteLine($"{taskName} - Step {i}");
                 Thread.Sleep(300); // Simulate work
             }

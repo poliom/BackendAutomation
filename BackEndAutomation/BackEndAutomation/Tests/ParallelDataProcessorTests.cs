@@ -15,7 +15,7 @@ namespace BackEndAutomation.Tests
             Time("Create test");
             var processor = new DataProcessorParallelTests();
             int result = processor.ProcessData(5);
-            Thread.Sleep(1200);
+            Thread.Sleep(5200);
             Time("After work");
             Assert.That(result, Is.EqualTo(10));
             Time("Test end");
@@ -27,7 +27,7 @@ namespace BackEndAutomation.Tests
             Time("Create test");
             var processor = new DataProcessorParallelTests();
             int result = processor.ProcessData(0);
-            Thread.Sleep(1500);
+            Thread.Sleep(7500);
             Time("After work");
             Assert.That(result, Is.EqualTo(0));
             Time("Test end");
@@ -39,7 +39,7 @@ namespace BackEndAutomation.Tests
             Time("Create test");
             var processor = new DataProcessorParallelTests();
             int result = processor.ProcessData(-3);
-            Thread.Sleep(200);
+            Thread.Sleep(20000);
             Time("After work");
             Assert.That(result, Is.EqualTo(-6));
             Time("Test end");

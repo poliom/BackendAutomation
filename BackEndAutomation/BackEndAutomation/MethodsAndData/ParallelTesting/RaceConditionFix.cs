@@ -11,7 +11,7 @@
             {
                 lock (lockObject)
                 {
-                    sharedCounter++;
+                    sharedCounter= sharedCounter+99;
                 }
             });
 
