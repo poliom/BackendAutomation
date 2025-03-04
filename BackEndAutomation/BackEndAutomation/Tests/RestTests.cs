@@ -2,16 +2,16 @@
 using BackEndAutomation.Rest.DataManagement;
 using NUnit.Framework;
 using RestSharp;
-using System;
 
 namespace BackEndAutomation.Tests
 {
-    [TestFixture]
+    [TestFixture, Parallelizable(ParallelScope.Children)]
     public class RestTests
     {
         [Test]
         public void LoginRestTest()
         {
+            Thread.Sleep(5200);
             RestCalls restCalls = new RestCalls();
 
             RestResponse userDetailsResponse = restCalls.LoginCall("http://161.35.202.130:3000", "dbsdhsh", "sdhshs");
@@ -21,6 +21,7 @@ namespace BackEndAutomation.Tests
         [Test]
         public void LoginRestTestFail()
         {
+            Thread.Sleep(15200);
             RestCalls restCalls = new RestCalls();
 
             RestResponse userDetailsResponse = restCalls.LoginCall("http://161.35.202.130:3000", "dbsdhsh", "sdhshs");
@@ -30,6 +31,7 @@ namespace BackEndAutomation.Tests
         [Test]
         public void PersonalDetailsRestTest()
         {
+            Thread.Sleep(5200);
             RestCalls restCalls = new RestCalls();
             ResponseDataExtractors extractResponseData = new ResponseDataExtractors();
 
@@ -49,6 +51,7 @@ namespace BackEndAutomation.Tests
         [Test]
         public void FollowUserRestTest()
         {
+            Thread.Sleep(3200);
             RestCalls restCalls = new RestCalls();
             ResponseDataExtractors extractResponseData = new ResponseDataExtractors();
 
@@ -68,6 +71,7 @@ namespace BackEndAutomation.Tests
         [Test]
         public void UnfollowUserRestTest()
         {
+            Thread.Sleep(8700);
             RestCalls restCalls = new RestCalls();
             ResponseDataExtractors extractResponseData = new ResponseDataExtractors();
 
@@ -87,6 +91,7 @@ namespace BackEndAutomation.Tests
         [Test]
         public void randomAPItest()
         {
+            Thread.Sleep(8520);
             RestCalls restCalls = new RestCalls();
             RestResponse response = restCalls.generalRestCall("https://restcountries.com/v3.1", "/all?fields=name", Method.Get);
 
