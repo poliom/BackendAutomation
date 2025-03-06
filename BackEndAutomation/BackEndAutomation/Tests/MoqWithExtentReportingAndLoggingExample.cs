@@ -1,6 +1,5 @@
 ﻿using AventStack.ExtentReports.Reporter;
 using AventStack.ExtentReports;
-using BackEndAutomation.DataProcessorCodes;
 using Moq;
 using NLog;
 using NUnit.Framework;
@@ -54,7 +53,7 @@ namespace BackEndAutomation.Tests
             Logger.Info($"Service returned: {result}");
 
             // Assert
-            Assert.That(result, Is.EqualTo("Mocked Data"));
+            Assert.That(result, Is.EqualTo("Mocked Datafsghj"));
             _test.Log(Status.Pass, "Test passed.");
             Logger.Info("Test passed.");
         }

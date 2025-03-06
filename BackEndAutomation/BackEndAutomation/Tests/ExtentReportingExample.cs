@@ -3,6 +3,7 @@ using AventStack.ExtentReports;
 using NUnit.Framework;
 using Assert = NUnit.Framework.Assert;
 using TestContext = NUnit.Framework.TestContext;
+using BackEndAutomation.MethodsAndData;
 
 namespace BackEndAutomation.Tests
 {
@@ -10,7 +11,7 @@ namespace BackEndAutomation.Tests
     public class ExtentReportingExample
     {
         private static ExtentReports _extent;
-        private ExtentTest _test;
+        private ExtentTest testReportObject;
 
         [OneTimeSetUp]
         public void SetupReport()
@@ -27,25 +28,40 @@ namespace BackEndAutomation.Tests
         [SetUp]
         public void BeforeTest()
         {
-            _test = _extent.CreateTest(TestContext.CurrentContext.Test.Name);
+            testReportObject = _extent.CreateTest(TestContext.CurrentContext.Test.Name);
         }
         [Test]
         public void SuccessfulTest()
         {
-            _test.Log(Status.Info, "This is a successful test.");
+            testReportObject.Log(Status.Info, "This is a successful test.");
             Assert.That(1 + 1, Is.EqualTo(2));
-            _test.Log(Status.Pass, "Test passed successfully.");
+            testReportObject.Log(Status.Pass, "Test passed successfully.");
         }
 
         [Test]
         public void FailingTest()
         {
-            _test.Log(Status.Info, "This is a failing test.");
+            testReportObject.Log(Status.Info, "This is a failing test.");
             if ((1 + 1) != 3)
             {
-                _test.Log(Status.Fail, "Test failed.");
+                testReportObject.Log(Status.Fail, "Test failed.");
             }
             Assert.That(1 + 1, Is.EqualTo(3));
+            Console.WriteLine("asdasd");
+        }
+
+        [Test]
+        public void TestToFailWithRappValidation()
+        {
+            testReportObject.Log(Status.Info, "This is a failing test.");
+
+            Utils.AssertMethodWithReport(
+                (1+1),
+                3,
+                "Error message for failed test",
+                testReportObject);
+            
+            Console.WriteLine("asdasd");
         }
 
         [OneTimeTearDown]
