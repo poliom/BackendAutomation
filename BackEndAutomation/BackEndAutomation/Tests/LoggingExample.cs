@@ -14,17 +14,19 @@ namespace BackEndAutomation.Tests
         [Test]
         public void ParallelTest1()
         {
-            Logger.Info("ParallelTest1 started.");
+            Logger.Debug("zxvzxvzx started.");
             Assert.That(2 + 2, Is.EqualTo(4));
-            Logger.Info("ParallelTest1 passed.");
+            Logger.Info("zxvzxvzxvxzv passed.");
+            Assert.That(1, Is.EqualTo(1));
+            Logger.Info("after assert.");
         }
 
         [Test]
         public void ParallelTest2()
         {
-            Logger.Info("ParallelTest2 started.");
+            Logger.Info("zxvzxvzxvzxvxzv started.");
             Assert.That(3 + 3, Is.EqualTo(6));
-            Logger.Info("ParallelTest2 passed.");
+            Logger.Info("PzxvzxvasvazxvzvzsvarallelTest2 passed.");
         }
     }
 }
