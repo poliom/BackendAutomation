@@ -3,7 +3,7 @@ using Moq;
 using NUnit.Framework;
 using Assert = NUnit.Framework.Assert;
 
-namespace BackEndAutomation.Tests
+namespace BackEndAutomation.Tests.NUnitTests
 {
     [TestFixture]
     public class DataProcessorTests

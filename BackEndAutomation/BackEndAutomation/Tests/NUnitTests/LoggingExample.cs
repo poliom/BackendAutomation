@@ -4,7 +4,7 @@ using NLog;
 using Assert = NUnit.Framework.Assert;
 
 
-namespace BackEndAutomation.Tests
+namespace BackEndAutomation.Tests.NUnitTests
 {
     [TestFixture, Parallelizable(ParallelScope.Children)]
     public class LoggingExample

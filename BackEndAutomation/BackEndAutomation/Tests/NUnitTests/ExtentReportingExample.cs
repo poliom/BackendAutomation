@@ -3,9 +3,9 @@ using AventStack.ExtentReports;
 using NUnit.Framework;
 using Assert = NUnit.Framework.Assert;
 using TestContext = NUnit.Framework.TestContext;
-using BackEndAutomation.MethodsAndData;
+using BackEndAutomation.Utilities;
 
-namespace BackEndAutomation.Tests
+namespace BackEndAutomation.Tests.NUnitTests
 {
     [TestFixture]
     public class ExtentReportingExample
@@ -42,7 +42,7 @@ namespace BackEndAutomation.Tests
         public void FailingTest()
         {
             testReportObject.Log(Status.Info, "This is a failing test.");
-            if ((1 + 1) != 3)
+            if (1 + 1 != 3)
             {
                 testReportObject.Log(Status.Fail, "Test failed.");
             }
@@ -56,11 +56,11 @@ namespace BackEndAutomation.Tests
             testReportObject.Log(Status.Info, "This is a failing test.");
 
             Utils.AssertMethodWithReport(
-                (1+1),
+                1 + 1,
                 3,
                 "Error message for failed test",
                 testReportObject);
-            
+
             Console.WriteLine("asdasd");
         }
 
