@@ -101,7 +101,7 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 await this.ScenarioStartAsync();
 #line 7
- await testRunner.GivenAsync("login data is prepared", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+ await testRunner.WhenAsync("login data is prepared", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 8
  await testRunner.WhenAsync("execute login API call", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");

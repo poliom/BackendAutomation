@@ -25,6 +25,7 @@ namespace BackEndAutomation.Tests.BBDTests
         }
 
         [Given("login data is prepared")]
+        [When("login data is prepared")]
         public void GivenLoginDataIsPrepared()
         {
             Console.WriteLine("Login data is prepared");

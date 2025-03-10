@@ -4,7 +4,7 @@ Test API calls with RestSharp and BDD tests
 
 @login
 Scenario: Login with API call
-	Given login data is prepared
+	When login data is prepared
 	When execute login API call
 	Then user data for logged in user is returned
 
