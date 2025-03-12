@@ -7,6 +7,16 @@ namespace BackEndAutomation
     [Binding]
     public sealed class Hooks
     {
+
+        private readonly ScenarioContext _scenarioContext;
+
+        public Hooks(ScenarioContext scenarioContext)
+        {
+            _scenarioContext = scenarioContext;
+            ExtentManager.InitReport();
+        }
+
+        //[BeforeScenario("@tag1", Order =-9)]
         [BeforeScenario("@tag1")]
         public void BeforeScenarioWithTag()
         {
@@ -19,12 +29,10 @@ namespace BackEndAutomation
             Console.WriteLine("Do something before every scenario, the lowest order is executed first");
         }
 
-        private readonly ScenarioContext _scenarioContext;
-
-        public Hooks(ScenarioContext scenarioContext)
+        [BeforeScenario(Order = -99)]
+        public void NegativeBeforeScenario()
         {
-            _scenarioContext = scenarioContext;
-            ExtentManager.InitReport();
+            Console.WriteLine("FIRST FIRST BEFORE");
         }
 
         [BeforeScenario]
