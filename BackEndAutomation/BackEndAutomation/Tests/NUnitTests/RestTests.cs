@@ -3,7 +3,7 @@ using BackEndAutomation.Rest.DataManagement;
 using NUnit.Framework;
 using RestSharp;
 
-namespace BackEndAutomation.Tests
+namespace BackEndAutomation.Tests.NUnitTests
 {
     [TestFixture, Parallelizable(ParallelScope.Children)]
     public class RestTests

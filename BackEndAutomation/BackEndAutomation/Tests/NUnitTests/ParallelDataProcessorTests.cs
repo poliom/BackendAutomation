@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using System.Diagnostics;
 
-namespace BackEndAutomation.Tests
+namespace BackEndAutomation.Tests.NUnitTests
 {
     [TestFixture, Parallelizable(ParallelScope.Children)]
     public class ParallelDataProcessorTests

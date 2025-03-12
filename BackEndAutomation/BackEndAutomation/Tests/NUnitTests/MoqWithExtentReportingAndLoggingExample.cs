@@ -7,7 +7,7 @@ using Assert = NUnit.Framework.Assert;
 using TestContext = NUnit.Framework.TestContext;
 using BackEndAutomation.MethodsAndData;
 
-namespace BackEndAutomation.Tests
+namespace BackEndAutomation.Tests.NUnitTests
 {
     [TestFixture]
     public class MoqWithExtentReportingAndLoggingExample

@@ -14,6 +14,9 @@
 	<PackageReference Include="NLog" Version="5.3.4" />
     <PackageReference Include="NUnit" Version="4.3.2" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.6.0" />
+	<PackageReference Include="Reqnroll" Version="2.2.1" />
+	<PackageReference Include="Reqnroll.NUnit" Version="2.2.1" />
+	<PackageReference Include="Reqnroll.Tools.MsBuild.Generation" Version="2.2.1" />
     <PackageReference Include="RestSharp" Version="112.1.0" />
     <PackageReference Include="RestSharp.Serializers.NewtonsoftJson" Version="112.1.0" />
   </ItemGroup>

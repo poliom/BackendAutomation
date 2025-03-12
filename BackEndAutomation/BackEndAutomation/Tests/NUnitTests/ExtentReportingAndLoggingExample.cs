@@ -5,9 +5,9 @@ using NUnit.Framework;
 using Assert = NUnit.Framework.Assert;
 using TestContext = NUnit.Framework.TestContext;
 using RazorEngine.Compilation.ImpromptuInterface.Optimization;
-using BackEndAutomation.MethodsAndData;
+using BackEndAutomation.Utilities;
 
-namespace BackEndAutomation.Tests
+namespace BackEndAutomation.Tests.NUnitTests
 {
 
     [TestFixture]
@@ -40,11 +40,11 @@ namespace BackEndAutomation.Tests
         [Test]
         public void TestWithReportAndLog()
         {
-            logHelperMethod("started.",1);
+            logHelperMethod("started.", 1);
 
             Assert.That(2 + 2, Is.EqualTo(4));
 
-            logHelperMethod("passed.",1);
+            logHelperMethod("passed.", 1);
         }
 
         [Test]
@@ -52,7 +52,7 @@ namespace BackEndAutomation.Tests
         {
             _test.Log(Status.Info, "Test2 is running.");
             Logger.Info("Test2 execution started.");
-            if ((1 + 1) != 3)
+            if (1 + 1 != 3)
             {
                 _test.Log(Status.Fail, "Test2 failed.");
             }
@@ -66,7 +66,7 @@ namespace BackEndAutomation.Tests
             logHelperMethod("started.", 2);
 
             Utils.AssertWithReportAndLog(
-                (1 + 1),
+                1 + 1,
                 3,
                 "Error message for failed test",
                 _test,
@@ -85,7 +85,7 @@ namespace BackEndAutomation.Tests
 
         private void logHelperMethod(string dynamicData, int number)
         {
-            Utils.logSuccessWithReportAndLog("Test"+number+" execution "+dynamicData , _test, Logger);
+            Utils.logSuccessWithReportAndLog("Test" + number + " execution " + dynamicData, _test, Logger);
         }
     }
 }

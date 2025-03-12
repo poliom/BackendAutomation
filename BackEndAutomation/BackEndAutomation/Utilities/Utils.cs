@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BackEndAutomation.MethodsAndData
+namespace BackEndAutomation.Utilities
 {
     public class Utils
     {
