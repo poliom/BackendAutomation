@@ -30,7 +30,8 @@ namespace BackEndAutomation.Tests.BBDTests
         [Given("open the calculator")]
         public void GivenOpenTheCalculator()
         {
-            Console.WriteLine("Calculator is open");
+            //Console.WriteLine("Calculator is open");
+            _test.Log(Status.Info, "Calculator is open");
         }
 
         [When("click {int} number")]
