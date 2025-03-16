@@ -1,0 +1,92 @@
+name: BE-Automation_Login_Test_Execution
+
+on:
+  schedule:
+    - cron: "0 3 * * *"  # Автоматично стартиране всеки ден в 03:00 UTC
+  workflow_dispatch:
+
+jobs:
+  build_and_test:
+    runs-on: windows-latest
+    if: github.ref == 'refs/heads/CI_process'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0'
+
+      - name: Restore dependencies
+        run: |
+          cd .\BackEndAutomation\
+          dotnet restore
+
+      - name: Build project
+        run: |
+          cd .\BackEndAutomation\
+          dotnet build --no-restore --configuration Release
+
+      - name: Run Reqnroll tests
+        run:  |
+          cd .\BackEndAutomation\
+          dotnet test --no-build --configuration Release --filter Category=login || true
+      
+      - name: Find Report File
+        id: find_report
+        run: |
+          $report = Get-ChildItem -Path ./BackEndAutomation/BackEndAutomation/bin/Release/net8.0/ -Filter "TestReport_*.html" | Select-Object -First 1
+          echo "REPORT_NAME=$($report.Name)" | Out-File -FilePath $env:GITHUB_ENV -Append
+        shell: pwsh
+
+      # ✅ Качване на репорта в GitHub Artifacts (запазва се 7 дни)
+      - name: Upload Test Report as Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-report
+          path: ./BackEndAutomation/BackEndAutomation/bin/Release/net8.0/TestReport_*.html
+          retention-days: 7  # Запазва репорта за 7 дни
+
+      - name: Clone Public Test Reports Repo
+        run: |
+            git clone https://x-access-token:${{ secrets.GH_PAT }}@github.com/your-username/test-reports.git
+            cd test-reports
+        shell: pwsh
+        
+      - name: Ensure Reports Directory Exists
+        run: |
+            if (-Not (Test-Path "test-reports/reports")) { New-Item -ItemType Directory -Path "test-reports/reports" }
+        shell: pwsh
+        
+      - name: Copy Report to Public Repo
+        run: |
+            cp ./BackEndAutomation/BackEndAutomation/bin/Release/net8.0/TestReport_*.html test-reports/reports/
+        shell: pwsh
+
+      # ✅ Копиране на репорта във `test-reports/reports/`
+      - name: Copy Report to Public Repo
+        run: |
+          cp ./BackEndAutomation/BackEndAutomation/bin/Release/net8.0/TestReport_*.html test-reports/reports/
+        shell: pwsh
+
+      # ✅ Commit и Push на репорта в публичното репо
+      - name: Push Report to Public Repo
+        run: |
+          cd test-reports
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          $date = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+          git add reports/
+          git commit -m "Update test report on $date"
+          git push origin main
+        shell: pwsh
+
+      # ✅ Генериране на линк към публичния репорт
+      - name: Generate and Show Public Report Link
+        run: |
+          $REPORT_URL = "https://poliom.github.io/test-reports/reports/${{ env.REPORT_NAME }}"
+          echo "Test Report URL: $REPORT_URL"
+          echo "::notice title=Test Report::View the test report at: $REPORT_URL"
+        shell: pwsh
