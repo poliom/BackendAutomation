@@ -38,7 +38,8 @@ namespace BackEndAutomation.Tests.BBDTests
         public void WhenClickNumber(int number)
         {
             numbers.Add(number);
-            Console.WriteLine("Click on number: " + number);
+            //Console.WriteLine("Click on number: " + number);
+            _test.Log(Status.Info, "Click on number: " + number);
         }
 
         [When("click + action")]
