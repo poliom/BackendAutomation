@@ -28,7 +28,8 @@ namespace BackEndAutomation.Tests.BBDTests
         [When("login data is prepared")]
         public void GivenLoginDataIsPrepared()
         {
-            Console.WriteLine("Login data is prepared");
+            //Console.WriteLine("Login data is prepared");
+            _test.Log(Status.Info, "Login data is prepared");
         }
 
         [When("execute login API call")]
@@ -147,7 +148,8 @@ namespace BackEndAutomation.Tests.BBDTests
             }
             if (resposeToBeValidated.StatusCode == System.Net.HttpStatusCode.OK)
             {
-                Console.WriteLine($"User is {toBeFollowed}: " + resposeToBeValidated.Content);
+                //Console.WriteLine($"User is {toBeFollowed}: " + resposeToBeValidated.Content);
+                _test.Log(Status.Info, $"User is {toBeFollowed}: " + resposeToBeValidated.Content);
             }
             else
             {
