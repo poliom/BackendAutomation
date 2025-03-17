@@ -1,4 +1,4 @@
-name: BE-Automation_Build_Validation
+name: BE-Automation_Build_Validation_Main
 
 on:
   push:
