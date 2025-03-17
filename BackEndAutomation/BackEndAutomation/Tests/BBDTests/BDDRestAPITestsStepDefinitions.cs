@@ -104,7 +104,7 @@ namespace BackEndAutomation.Tests.BBDTests
                 "Problem getting user details: " + userProfileDetailsResponse.Content,
                 _scenarioContext);
 
-            _test.Log(Status.Info, "User profile details are: " + userProfileDetailsResponse.Content);
+            _test.Log(Status.Info, "User profile details are: " + userProfileDetailsResponse.Content); // log message into the report
         }
 
         [When("execute get follow user profile with API call")]
