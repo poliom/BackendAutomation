@@ -1,12 +1,12 @@
-name: BE-Automation_Build_Validation_CI_process
+name: BE-Automation_Build_Validation_Main
 
 on:
   push:
     branches:
-      - ci_process
+      - main
   pull_request:
     branches:
-      - ci_process
+      - main
 
 jobs:
   build_and_test:
