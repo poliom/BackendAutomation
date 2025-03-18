@@ -238,6 +238,7 @@ this.ScenarioInitialize(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("3 My cal scenario")]
         [NUnit.Framework.CategoryAttribute("tag1")]
+        [NUnit.Framework.CategoryAttribute("UI")]
         [NUnit.Framework.TestCaseAttribute("8", "6", "14", "\"blahgdajgb\"", null)]
         [NUnit.Framework.TestCaseAttribute("7", "7", "14", "\"sagsafgagag\"", null)]
         [NUnit.Framework.TestCaseAttribute("7", "6", "13", "\"sgesgds\"", null)]
@@ -247,7 +248,8 @@ this.ScenarioInitialize(scenarioInfo);
         public async System.Threading.Tasks.Task _3MyCalScenario(string number1, string number2, string sum, string errorMessage, string[] exampleTags)
         {
             string[] @__tags = new string[] {
-                    "tag1"};
+                    "tag1",
+                    "UI"};
             if ((exampleTags != null))
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
