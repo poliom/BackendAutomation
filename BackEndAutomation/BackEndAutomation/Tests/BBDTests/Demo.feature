@@ -44,7 +44,7 @@ Scenario: 1 My cal scenario
 		And click = action
 	Then the calculator shows "46"
 
-	@tag1
+	@tag1 @UI
 Scenario Outline: 3 My cal scenario
 	Given open the calculator
 	When click <number1> number
