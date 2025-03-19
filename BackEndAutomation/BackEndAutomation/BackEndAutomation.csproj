@@ -8,6 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ReqnrollFeatureFiles Remove="Tests\BBDTests\Class1.feature" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Tests\BBDTests\Class1.feature" />
+  </ItemGroup>
+
+  <ItemGroup>
 	<PackageReference Include="DotNetSeleniumExtras.WaitHelpers" Version="3.11.0" />
 	<PackageReference Include="ExtentReports" Version="5.0.4" />
 	<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
