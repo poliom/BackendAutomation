@@ -1,13 +1,19 @@
 using System;
 using AventStack.ExtentReports;
+using BackEndAutomation.Rest.Calls;
+using BackEndAutomation.Rest.DataManagement;
 using BackEndAutomation.Utilities;
 using Reqnroll;
+using RestSharp;
 
 namespace BackEndAutomation.Tests.BBDTests
 {
     [Binding]
     public class StockStepDefinitions
     {
+        private RestCalls restCalls = new RestCalls();
+        private ResponseDataExtractors extractResponseData = new ResponseDataExtractors();
+
         private readonly ScenarioContext _scenarioContext;
         private ExtentTest _test;
         private List<double> numbers = new List<double>();
@@ -22,15 +28,38 @@ namespace BackEndAutomation.Tests.BBDTests
         [Given("get stock price and last divident price for nVidia")]
         public void GivenGetStockPriceAndLastDividentPriceForNVidia()
         {
+            // stock price
             numbers.Add(15.23);
+            // divident per share
             numbers.Add(5.18);
+            // number of times per year given divident
+            numbers.Add(4);
             _test.Log(Status.Info, "Data for nVidia stocks is get");
         }
-
+        //baseURL
+        // https://testapis-usjm.onrender.com/
+        //endpoint
+        // calculate
+        //params
+        // ?targetMonthlyIncome=1000
+        // &dividendFrequency=4
+        // &stockPrice=15.23
+        // &dividendPerShare=5.18
+        // &monthlyInvestment=100
         [When("calculate the time for return investment of {int} for {int} per month")]
-        public void WhenCalculateTheTimeForReturnInvestmentOfForPerMonth(int p0, int p1)
+        public void WhenCalculateTheTimeForReturnInvestmentOfForPerMonth(int targetIncome, int investPerMonth)
         {
-            calculateTimeMessageResponse = "2 години и 1 месеца";
+            double dividendFrequency = numbers[2];
+            double stockPrice = numbers[0];
+            double dividendPerShare = numbers[1];
+
+            string baseUrl = "https://testapis-usjm.onrender.com";
+            string endpoint = $"/calculate?targetMonthlyIncome={targetIncome}" +
+                $"&dividendFrequency={dividendFrequency}&stockPrice={stockPrice}" +
+                $"&dividendPerShare={dividendPerShare}&monthlyInvestment={investPerMonth}";
+
+            RestResponse response = restCalls.generalRestCall(baseUrl, endpoint, Method.Get);
+            calculateTimeMessageResponse = extractResponseData.ExtractStockMessage(response.Content);
         }
 
         [Then("the needed time is {int} years and {int} months")]

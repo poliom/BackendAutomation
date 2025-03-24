@@ -104,7 +104,7 @@ this.ScenarioInitialize(scenarioInfo);
  await testRunner.GivenAsync("get stock price and last divident price for nVidia", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
 #line 8
- await testRunner.WhenAsync("calculate the time for return investment of 1000 for 200 per month", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+ await testRunner.WhenAsync("calculate the time for return investment of 1000 for 100 per month", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 9
  await testRunner.ThenAsync("the needed time is 2 years and 0 months", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");

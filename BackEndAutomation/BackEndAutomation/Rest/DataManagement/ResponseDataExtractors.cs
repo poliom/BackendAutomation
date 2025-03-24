@@ -16,5 +16,12 @@ namespace BackEndAutomation.Rest.DataManagement
             var jsonObject = JObject.Parse(jsonResponse);
             return jsonObject["user"]?["id"]?.Value<int>() ?? 0;
         }
+
+        public string ExtractStockMessage(string jsonResponse)
+        {
+            JObject jsonObject = JObject.Parse(jsonResponse);
+            return jsonObject["message"]?.ToString();
+
+        }
     }
 }
