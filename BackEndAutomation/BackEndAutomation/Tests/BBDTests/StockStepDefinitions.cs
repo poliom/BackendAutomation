@@ -34,7 +34,11 @@ namespace BackEndAutomation.Tests.BBDTests
             numbers.Add(5.18);
             // number of times per year given divident
             numbers.Add(4);
-            _test.Log(Status.Info, "Data for nVidia stocks is get");
+
+            UtilitiesMethods.LogMessage(
+                message: "Data for nVidia stocks is get",
+                scenarioContext: _scenarioContext,
+                LogStatuses.Info);
         }
         //baseURL
         // https://testapis-usjm.onrender.com/
@@ -60,17 +64,26 @@ namespace BackEndAutomation.Tests.BBDTests
 
             RestResponse response = restCalls.generalRestCall(baseUrl, endpoint, Method.Get);
             calculateTimeMessageResponse = extractResponseData.ExtractStockMessage(response.Content);
+
+            UtilitiesMethods.LogMessage(
+                message: "The calculating the time is done",
+                scenarioContext: _scenarioContext,
+                LogStatuses.Info);
         }
 
         [Then("the needed time is {int} years and {int} months")]
         public void ThenTheNeededTimeIsYearsAndMonths(int years, int months)
         {
-            string expectedMessage = $"{years} години и {months} месеца";
+            string expectedMessage = $"{years} years and {months} months";
 
             UtilitiesMethods.AssertEqual(
                 actual: calculateTimeMessageResponse,
                 expected: expectedMessage,
                 message: "The calculate time is different than the expected",
+                scenarioContext: _scenarioContext);
+
+            UtilitiesMethods.LogMessage(
+                message: "The calculate time is same as the expected",
                 scenarioContext: _scenarioContext);
         }
     }

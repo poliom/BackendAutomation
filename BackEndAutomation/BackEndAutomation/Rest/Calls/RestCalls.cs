@@ -84,17 +84,45 @@ namespace BackEndAutomation.Rest.Calls
             Console.WriteLine(response.Content);
         }
 
-        public RestResponse generalRestCall(string baseUrl, string endpoint, Method method)
+        public RestResponse generalRestCall(
+            string baseUrl,
+            string endpoint,
+            Method method
+            //string ParametersType = "",
+            //Dictionary<string, string> paramters = Dictionary<string, string>()
+            )
         {
-
             RestClientOptions options = new RestClientOptions(baseUrl)
             {
                 Timeout = TimeSpan.FromSeconds(120),
             };
             RestClient client = new RestClient(options);
             RestRequest request = new RestRequest(endpoint, method);
+            //if (ParametersType != string.Empty)
+            //{
+            //    foreach (KeyValuePair<string, string> param in paramters)
+            //    {
+            //        request.AddParameter(param.Key, param.Value);
+            //    }
+            //}
             RestResponse response = client.Execute(request);
 
+            return response;
+        }
+
+        public RestResponse LoginOnlineShopCall(string username, string password)
+        {
+            var options = new RestClientOptions("https://testonlineshop.onrender.com")
+            {
+                Timeout = TimeSpan.FromSeconds(120),
+            };
+            var client = new RestClient(options);
+            var requestOnlineShop = new RestRequest("/auth/login", Method.Post);
+            requestOnlineShop.AlwaysMultipartFormData = true;
+            requestOnlineShop.AddParameter("username", username);
+            requestOnlineShop.AddParameter("password", password);
+            RestResponse response = client.Execute(requestOnlineShop);
+            Console.WriteLine(response.Content);
             return response;
         }
     }

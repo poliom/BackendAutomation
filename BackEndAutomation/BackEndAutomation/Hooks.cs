@@ -72,14 +72,14 @@ namespace BackEndAutomation
         {
             var еxtentTest = ExtentManager.CreateTest("Scenario: " + GetScenarioName(_scenarioContext));
             _scenarioContext["ExtentTest"] = еxtentTest;
-            UtilitiesMethods.LogInfoMessage("Starting scenario", _scenarioContext);
+            UtilitiesMethods.LogMessage("Starting scenario", _scenarioContext);
             Logger.Log.Info("Starting scenario...");
         }
 
         [BeforeStep]
         public void BeforeStep()
         {
-            UtilitiesMethods.LogInfoMessage("Start executing Step: " + _scenarioContext.StepContext.StepInfo.Text, _scenarioContext);
+            UtilitiesMethods.LogMessage("Start executing Step: " + _scenarioContext.StepContext.StepInfo.Text, _scenarioContext, LogStatuses.Debug);
         }
 
         [AfterScenario]

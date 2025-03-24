@@ -5,10 +5,10 @@ namespace BackEndAutomation.Rest.DataManagement
     public class ResponseDataExtractors
     {
 
-        public string ExtractLoggedInUserToken(string jsonResponse)
+        public string ExtractLoggedInUserToken(string jsonResponse, string jsonIdentfier = "token")
         {
             JObject jsonObject = JObject.Parse(jsonResponse);
-            return jsonObject["token"]?.ToString();
+            return jsonObject[jsonIdentfier]?.ToString();
         }
 
         public int ExtractUserId(string jsonResponse)
